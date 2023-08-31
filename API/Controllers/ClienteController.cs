@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class PaisController : BaseApiController
+public class ClienteController : BaseApiController
 {
     private IUnitOfWork unitofwork;
     private readonly IMapper mapper;
 
-    public PaisController(IUnitOfWork unitOfWork, IMapper mapper)
+    public ClienteController(IUnitOfWork unitOfWork, IMapper mapper)
     {
         this.unitofwork = unitOfWork;
         this.mapper = mapper;
