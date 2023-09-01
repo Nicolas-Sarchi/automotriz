@@ -37,22 +37,22 @@ public class ClienteController : BaseApiController
         return mapper.Map<ClienteDto>(cliente);
     }
 
-    // [HttpPost]
-    // [ProducesResponseType(StatusCodes.Status200OK)]
-    // [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    // public async Task<ActionResult<Pais>> Post(PaisesDto PaisDto)
-    // {
-    //     var pais = mapper.Map<Pais>(PaisDto);
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Cliente>> Post(ClienteDto ClienteDto)
+    {
+        var Cliente = mapper.Map<Cliente>(ClienteDto);
 
-    //     unitofwork.Paises.Add(pais);
-    //     await unitofwork.SaveAsync();
-    //     if (pais == null)
-    //     {
-    //         return BadRequest();
-    //     }
-    //     PaisDto.Id = pais.Id;
-    //     return CreatedAtAction(nameof(Post), new { id = PaisDto.Id }, PaisDto);
-    // }
+        unitofwork.Clientes.Add(Cliente);
+        await unitofwork.SaveAsync();
+        if (Cliente == null)
+        {
+            return BadRequest();
+        }
+        ClienteDto.Id = Cliente.Id;
+        return CreatedAtAction(nameof(Post), new { id = ClienteDto.Id }, ClienteDto);
+    }
 
     // [HttpPut("{id}")]
     // [ProducesResponseType(StatusCodes.Status200OK)]
